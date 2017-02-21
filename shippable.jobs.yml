@@ -23,3 +23,11 @@ jobs:
       - TASK: managed
 
 # / TEST deployment for VISUALIZER to Amazon ECS
+
+# Connect CI with dv-img resource
+#  - name: samplePipelinesDemo_runCI
+#    type: runCI
+#    steps:
+#      - OUT: dv-img
+# / Connect CI with dv-img resource
+
