@@ -1,6 +1,0 @@
-
-language: none
-
-build:
-  ci:
-    - echo 'CI Running'
