@@ -1,33 +1,15 @@
 jobs:
-
-# jobs for the dv pipeline from CI thru TEST environment
-
-
-# manifest gen for VISUALIZER
-  - name: dv-man
+  - name: pipelines-demo-manifest
     type: manifest
     steps:
-      - IN: dv-img
-      - IN: dv-img-opts
-      - TASK: managed
+     - IN: pipelines-demo-image
+     - TASK: managed
 
-#/ manifest gen for VISUALIZER
-
-# TEST deployment for VISUALIZER to Amazon ECS
-  - name: dv-test-ecs
+  - name: deploy-pipelines-demo
     type: deploy
     steps:
-      - IN: dv-man
-#      - IN: dv-params
-      - IN: env-test-ecs
+      - IN: pipelines-demo-manifest
+      - IN: docker-options
+      - IN: ecs-cluster
       - TASK: managed
-
-# / TEST deployment for VISUALIZER to Amazon ECS
-
-# Connect CI with dv-img resource
-#  - name: samplePipelinesDemo_runCI
-#    type: runCI
-#    steps:
-#      - OUT: dv-img
-# / Connect CI with dv-img resource
-
+        deployMethod: upgrade
