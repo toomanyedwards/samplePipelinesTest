@@ -1,23 +1,43 @@
 resources:
-  - name: pipelines-demo-image
-    type: image
-    integration: shipdeploy
-    pointer:
-      sourceName: "shippablesamples/samplepipelinesdemo"
-      isPull: false
-    seed:
-      versionName: "latest"
 
-  - name: docker-options
+# resources for the dv demo pipelines from CI thru TEST environment
+
+#######1: Create DV pipeline
+
+# Docker Image for VISUALIZER
+  - name: dv-img
+    type: image
+    integration: dh-manishas
+    pointer:
+      sourceName: "shippableSamples/samplepipelinesdemo"
+      isPull: false
+    #make sure this seed version exists in your registry account
+    seed:
+      versionName: master.1
+
+# Docker Image Options for VISUALIZER
+  - name: dv-img-opts
     type: dockerOptions
     version:
+      memory: 128
+      cpuShares: 256
       portMappings:
         - 80:80
+      publishAllPorts : true
 
-  - name: ecs-cluster
+# env vars for VISUALIZER
+#  - name: dv-params
+#    type: params
+#    version:
+#      params:
+#        MONGO_API_URL: "https://api.mlab.com/api/1/databases/box-pipev2/collections/boxes?apiKey=QRsFUOV7XbNdHfTnJ7KU9bgQdnun-m_I"
+
+# add TEST env - AWS cluster
+  - name: env-test-ecs
     type: cluster
-    integration: aws
+    integration: demo-manishas-ecs
     pointer:
-      sourceName : "my-cluster" #name of the cluster to which we are deploying
-      region: "us-west-2"
-Contact GitHub API Training Shop Blog About
+      sourceName : "demo-shippable-ecs-test"
+      region: "us-east-1"
+
+#######1: EOF Create DV pipeline
