@@ -4,7 +4,7 @@ jobs:
 
 
 # manifest gen for VISUALIZER
-  - name: dv-man
+  - name: dv-manfoo
     type: manifest
     steps:
       - IN: dv-img
@@ -17,7 +17,7 @@ jobs:
   - name: dv-test-ecs
     type: deploy
     steps:
-      - IN: dv-man
+      - IN: dv-manfoo
 #      - IN: dv-params
       - IN: env-test-ecs
       - TASK: managed
