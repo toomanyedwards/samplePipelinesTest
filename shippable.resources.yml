@@ -9,7 +9,7 @@ resources:
     type: image
     integration: Docker-Hub-Integration
     pointer:
-      sourceName: "toomanyedwards/connective-core-docker-repo"
+      sourceName: toomanyedwards/connective-core-docker-repo
       isPull: false
     #make sure this seed version exists in your registry account
     seed:
