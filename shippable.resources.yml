@@ -7,7 +7,7 @@ resources:
 # Docker Image for VISUALIZER
   - name: dv-img
     type: image
-    integration: Docker-Hub-Integration
+    integration: Docker-Hub-IntegrationFoo
     pointer:
       sourceName: toomanyedwards/connective-core-docker-repo
       isPull: false
