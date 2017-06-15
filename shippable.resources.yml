@@ -40,6 +40,6 @@ resources:
     integration: AWS-Integration
     pointer:
       sourceName : "wifi-location-sensing-cluster"
-      region: "us-east-1"
+      region: "us-east-1b"
 
 #######1: EOF Create DV pipeline
